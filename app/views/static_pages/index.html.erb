@@ -6,12 +6,7 @@
 
   <section class="main">
     <ul class="todo-list">
-      <li>
-        <div class="view">
-          <input class="toggle" tyep="checkbox">
-          <label>Do laundry</label>
-        </div>
-      </li>
+
     </ul>
   </section>
 </section>
@@ -22,7 +17,8 @@ $(function() {
     var htmlString= "";
 
     $.each(data, function(index, task) {
-      var liElement = '<li><div class="view"><input class="toggle" type="checkbox"><label>' + task.title + '</lable></div></li>';
+      var checkedStatus = task.done ? "checked" : "";
+      var liElement = '<li><div class="view"><input class="toggle" type="checkbox"' + checkedStatus + '><label>' + task.title + '</lable></div></li>';
       htmlString += liElement;
 
     });
