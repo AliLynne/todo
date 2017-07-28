@@ -18,10 +18,16 @@ $(function() {
   $('#new-form').submit(function(event){
     event.preventDefault();
     var textbox = $('.new-todo');
-    console.log("Task: ", textbox.val());
-  });
+    var payload = {
+      task: {
+        title: textbox.val()
+      }
+    };
+    $.post("/tasks", payload).success(function(data) {
+      console.log("Successful HTTP Request");
+    });
 });
-$(function() {
+
   // The taskHtml method takes in a Javascript rep. of the task and produces an HTML rep. using <li> tags
   function taskHtml(task) {
     var checkedStatus = task.done ? "checked" : "";
